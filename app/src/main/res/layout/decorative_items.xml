@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/productLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginTop="20dp"
+    android:layout_height="wrap_content">
+<ImageView
+    android:id="@+id/ItemImg"
+    android:layout_width="80dp"
+    android:layout_marginTop="20dp"
+    android:layout_height="80dp"/>
+    <TextView
+        android:id="@+id/ColorNameTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/futura_medium_bt"
+        android:text="Aaaaa"
+        android:textSize="12dp"
+        android:textColor="#3e3c3c"/>
+</LinearLayout>

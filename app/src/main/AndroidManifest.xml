@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.shawinfosolutions.paintvisualizer">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.CAMERA"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+        <activity
+            android:name=".Activity.SplashScreen"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.MainActivity" />
+        <activity
+            android:name=".Activity.SignUpActivity"
+            android:theme="@style/AppFullScreenTheme" />
+        <activity
+            android:name=".Activity.SignUpWithUsActivity"
+            android:theme="@style/AppFullScreenTheme" />
+        <activity
+            android:name=".Activity.InspirationalTrendsActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".Activity.VisualizerActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".Activity.PaintVisualizerActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".Activity.SelectColorFromPalletActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".Activity.SelectedColorToImageActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
+
+        <activity
+            android:name=".Activity.ColorMatchFirstActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity android:name=".Activity.OurProduct.OurProductActivity" />
+        <activity android:name=".Activity.MatchColorSecondActivity"/>
+        <activity android:name=".Activity.MyProjects.MyProjectActivity" />
+        <activity android:name=".Activity.MoreOptionActivity" />
+        <activity android:name=".Activity.ColoExplorerActivity"
+            android:theme="@style/AppFullScreenTheme" />
+        <activity android:name=".Activity.OurProduct.OurProductInDetailsActivity"
+            android:theme="@style/AppFullScreenTheme" />
+        <activity android:name=".Activity.SelectedProjectActivity"
+            android:theme="@style/AppFullScreenTheme" />
+        <activity
+            android:name=".Activity.MyPrefrenceActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".Activity.FAQSActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".Activity.FeedbackActvity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".Activity.VideoActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".Activity.StoreLocatorActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
+        <activity
+            android:name=".Activity.OpenCameraActivity"
+            />
+
+
+    </application>
+
+</manifest>

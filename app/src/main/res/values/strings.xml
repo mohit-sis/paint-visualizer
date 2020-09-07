@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">PaintVisualizer</string>
+    <string name="hint_firestname">First name</string>
+    <string name="hint_lastname">Last name</string>
+    <string name="hint_mail">Email</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_userpassword">Password</string>
+    <string name="action_settings">Setting</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="hint_username_val">Username</string>
+    <string name="hint_password_val">Password</string>
+    <string name="hint_Con_password_val">Confirm Password</string>
+    <string name="hint_CompanyName_val">Company Name</string>
+    <string name="hint_date_of_birth_val">Date Of Birth</string>
+    <string name="hint_PhoneNo_val">Phone Number</string>
+    <string name="hint_email_address_val">Email Address</string>
+    <string name="description_pref">Lorem lpsum is simply dummy text of the printing and Contrary to popular belief,Lorem lpsum is not simply random text. <b> <font color='black'>More</font></b> </string>
+    <string name="que">Question</string>
+    <string name="error_player">Error Player</string>
+    <string name="tag1">Tag1</string>
+    <string name="tagimageLink">imageLink</string>
+    <string name="tagdescription">description</string>
+    <string name="taguses">uses</string>
+    <string name="tagtype">Type</string>
+    <string name="tagcolor">Color</string>
+    <string name="tagfinish">finish</string>
+    <string name="tagrecommended">recommended</string>
+    <string name="tagmixingRatio">mixingRatio</string>
+    <string name="tagPicture">Pictures</string>
+    <string name="tagProducts">Products</string>
+    <string name="tagColors">Colors</string>
+</resources>
