@@ -25,6 +25,7 @@
             android:textSize="18dp" />
 
         <ImageView
+            android:id="@+id/crossBtn"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center"

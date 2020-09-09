@@ -2,18 +2,26 @@ package com.shawinfosolutions.paintvisualizer.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.shawinfosolutions.paintvisualizer.Activity.MyProjects.MyProjectActivity;
 import com.shawinfosolutions.paintvisualizer.Adapter.ColourExplorerTabAdapter;
 import com.shawinfosolutions.paintvisualizer.Adapter.SelectedProjectTabAdapter;
+import com.shawinfosolutions.paintvisualizer.Constants;
 import com.shawinfosolutions.paintvisualizer.Model.MyProject;
 import com.shawinfosolutions.paintvisualizer.Model.MyProjectItem;
 import com.shawinfosolutions.paintvisualizer.Model.ProductList;
 import com.shawinfosolutions.paintvisualizer.R;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -23,7 +31,9 @@ import androidx.viewpager.widget.ViewPager;
 public class SelectedProjectActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
-    ImageView homeImg, productImg, projectImg, moreImg;
+    ImageView homeImg, productImg, projectImg, moreImg, backBtn;
+    TextView ProjectName;
+    LinearLayout selectedProjectBannerLay;
     private ActionBar actionbar;
 
     @Override
@@ -32,15 +42,28 @@ public class SelectedProjectActivity extends AppCompatActivity {
         setContentView(R.layout.selected_project_layout);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
+        backBtn = findViewById(R.id.backBtn);
+        ProjectName = findViewById(R.id.ProjectName);
+        selectedProjectBannerLay = findViewById(R.id.selectedProjectBannerLay);
 
         tabLayout.addTab(tabLayout.newTab().setText("Gallery"));
         tabLayout.addTab(tabLayout.newTab().setText("Colour "));
         tabLayout.addTab(tabLayout.newTab().setText("Products "));
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(SelectedProjectActivity.this, MyProjectActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         if(getIntent().getExtras() != null) {
             MyProjectItem user = (MyProjectItem) getIntent().getSerializableExtra("myProject");
+            Log.e("selectedProjectName",user.getTitle());
+            ProjectName.setText(user.getTitle());
             final SelectedProjectTabAdapter adapter = new SelectedProjectTabAdapter(this, getSupportFragmentManager(), tabLayout.getTabCount(),user);
             viewPager.setAdapter(adapter);
         }

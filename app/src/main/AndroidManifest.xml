@@ -83,7 +83,9 @@
             android:name=".Activity.OpenCameraActivity"
             />
 
-
+        <activity
+            android:name=".Activity.ContactUsActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
     </application>
 
 </manifest>

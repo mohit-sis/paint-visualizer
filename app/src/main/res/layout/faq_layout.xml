@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/white"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +33,7 @@
             android:textColor="@color/white"
             android:textSize="20dp" />
     </LinearLayout>
-
+    <!--
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
@@ -46,6 +47,33 @@
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
+    -->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/_rounded_corner"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FAQs"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam assumenda aut, commodi delectus doloremque excepturi fuga fugit laborum magni, natus perferendis perspiciatis sint voluptatem. Aperiam dolore dolorem minus molestiae saepe similique ut vel velit veniam voluptate. Debitis, excepturi, officia. Aspernatur facilis harum inventore, laudantium officiis qui quo. Mollitia, omnis, voluptatum."/>
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_rounded_corner"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:text="Submit"
+        android:gravity="center"/>
 
 </LinearLayout>

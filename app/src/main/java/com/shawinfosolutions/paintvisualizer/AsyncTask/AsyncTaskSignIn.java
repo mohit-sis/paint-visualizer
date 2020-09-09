@@ -138,7 +138,7 @@ public class AsyncTaskSignIn extends AsyncTask<Void, Void, Void> {
                                                     editor.commit();
                                                     editor.apply();
                                                     accessToken = pref.getString("accessToken", null);
-Log.e("accessToken","==="+accessToken);
+                                                    Log.e("accessToken","==="+accessToken);
                                                     Intent intent = new Intent(context, MainActivity.class);
                                                     context.startActivity(intent);
                                                 }

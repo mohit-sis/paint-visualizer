@@ -193,6 +193,7 @@ private ImageView cameraImg;
                             fn_imagespath();
                         }catch (Exception e){
                             e.printStackTrace();
+                            Log.e("fn_imagespath failed", e.toString());
                         }
                     } else {
                         Toast.makeText(VisualizerActivity.this, "The app was not allowed to read or write to your storage. Hence, it cannot function properly. Please consider granting it this permission", Toast.LENGTH_LONG).show();

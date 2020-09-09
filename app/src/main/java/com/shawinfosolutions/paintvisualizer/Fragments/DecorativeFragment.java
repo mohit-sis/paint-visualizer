@@ -13,6 +13,7 @@ import android.widget.GridView;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.error.AuthFailureError;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonArrayRequest;
@@ -218,7 +219,7 @@ public String[] ImageName={"Duco Body Filler","Silk Viney Emulsion", "Autocolor"
             accessToken = pref.getString("accessToken", null);
             Log.e("accessToken","==="+accessToken);
             JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
-                    (GET, Constants.AllProducts, null, new Response.Listener<JSONArray>() {
+                    (GET, Constants.DecorativeProducts, null, new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
                             Log.e("response", String.valueOf(response));
@@ -268,6 +269,7 @@ public String[] ImageName={"Duco Body Filler","Silk Viney Emulsion", "Autocolor"
                     return headers;
                 }
             };
+
             Volley.newRequestQueue(context).add(jsonObjectRequest);
 
 

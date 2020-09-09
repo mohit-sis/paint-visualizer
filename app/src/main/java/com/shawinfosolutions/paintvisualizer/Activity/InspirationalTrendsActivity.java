@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.shawinfosolutions.paintvisualizer.Adapter.Pref_DisPagerAdapter;
 import com.shawinfosolutions.paintvisualizer.Constants;
 import com.shawinfosolutions.paintvisualizer.Model.ColorData;
+import com.shawinfosolutions.paintvisualizer.Model.PrefDiscoveryData;
 import com.shawinfosolutions.paintvisualizer.R;
 
 import org.json.JSONArray;
@@ -50,6 +51,9 @@ public class InspirationalTrendsActivity extends Activity {
     private ImageView backBtn;
     private TextView DescriptionTxt1,DescriptionTxt2;
     private LinearLayout selectedColorLay,openOptionLayout;
+
+    private ArrayList<PrefDiscoveryData> prefDataList;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +81,11 @@ public class InspirationalTrendsActivity extends Activity {
         imagePathlist.clear();
         colorDataList = new ArrayList<>();
         colorDataList.clear();
+
+        //m
+        prefDataList = new ArrayList<>();
+        prefDataList.clear();
+
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         accessToken = sharedpreferences.getString("accessToken", null);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +106,9 @@ public class InspirationalTrendsActivity extends Activity {
                             preference_parents_layout.removeAllViews();
                             colorDataList.clear();
                             imagePathlist.clear();
+                            //m
+                            prefDataList.clear();
+
                             for (int i = 0; i < response.length(); i++) {
                                 childProdlay = (LinearLayout) getLayoutInflater().inflate(R.layout.color_pref_child, null);
                                 image1 = childProdlay.findViewById(R.id.image1);
@@ -112,6 +124,15 @@ public class InspirationalTrendsActivity extends Activity {
                                 JSONArray jsonArray = jresponse.getJSONArray("colors");
                                 Log.e("size", "" + jsonArray.length());
 
+                                //m
+                                PrefDiscoveryData prefData = new PrefDiscoveryData();
+
+                                prefData.setTitle(title);
+                                prefData.setImageLink(imageLink);
+
+                                //m
+                                colorDataList.clear();
+
                                 for (int j = 0; j < jsonArray.length(); j++) {
                                     JSONObject jcolorObj = jsonArray.getJSONObject(j);
 
@@ -120,11 +141,22 @@ public class InspirationalTrendsActivity extends Activity {
                                     colorData.setHexcodeVal(jcolorObj.getString("hexColorCode"));
                                     colorDataList.add(colorData);
 
+                                    //m
+                                    prefData.setColors(colorDataList);
                                 }
-                                pref_disPagerAdapter = new Pref_DisPagerAdapter(InspirationalTrendsActivity.this, imagePathlist, colorDataList);
+
+                                prefDataList.add(prefData);
+
+                                Log.e("colorDataListSize",String.valueOf(colorDataList.size()));
+                                Log.e("colorDataList",String.valueOf(colorDataList));
+
+                                pref_disPagerAdapter = new Pref_DisPagerAdapter(InspirationalTrendsActivity.this, imagePathlist, colorDataList, prefData);
                                 viewPager.setAdapter(pref_disPagerAdapter);
 
                             }
+
+                            Log.e("prefDataListSize",String.valueOf(prefDataList.size()));
+                            Log.e("prefDataList",String.valueOf(prefDataList));
 
                         } catch (JSONException e) {
                             e.printStackTrace();

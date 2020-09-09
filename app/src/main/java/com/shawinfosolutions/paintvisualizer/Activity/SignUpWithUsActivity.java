@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.facebook.FacebookSdk;
+//import com.facebook.appevents.AppEventsLogger;
 import com.shawinfosolutions.paintvisualizer.AsyncTask.AsyncTaskSignUp;
 import com.shawinfosolutions.paintvisualizer.R;
 
@@ -148,15 +150,14 @@ private EditText editTextUsername,editTextPassword,editTextConPassword,editTextC
 
 
                 }
-
-
-
-
             }
         });
+
+
     }
 
     private boolean ValidateData() {
+
         if(editTextUsername.getText().toString().equalsIgnoreCase("")){
             Toast.makeText(this, "Please enter Username", Toast.LENGTH_LONG).show();
             return false;
@@ -171,7 +172,7 @@ private EditText editTextUsername,editTextPassword,editTextConPassword,editTextC
         else if(!(editTextPassword.getText().toString().equalsIgnoreCase(editTextConPassword.getText().toString()))){
             Toast.makeText(this, "Password does not match", Toast.LENGTH_LONG).show();
             return false;
-        }if(editTextCompanyName.getText().toString().equalsIgnoreCase("")){
+        }if(editTextCompanyName.getText().toString().equalsIgnoreCase("") && Home == "111" && Prop == "000"){
             Toast.makeText(this, "Please enter Company Name", Toast.LENGTH_LONG).show();
             return false;
         }if(editTextDateOfBirth.getText().toString().equalsIgnoreCase("")){
@@ -210,6 +211,7 @@ private EditText editTextUsername,editTextPassword,editTextConPassword,editTextC
         return pat.matcher(edt_mail.getText().toString()).matches();
 
     }
+
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
         @Override

@@ -29,7 +29,7 @@
             android:layout_marginLeft="5dp"
             android:textAllCaps="true"
             android:fontFamily="@font/futura_heavy_font"
-            android:text="Feedback "
+            android:text="Contact Us"
             android:textColor="@color/white"
             android:textSize="20dp" />
     </LinearLayout>
@@ -44,27 +44,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Feedback"/>
-        <EditText
-            android:id="@+id/feebBackText"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:gravity="top"
-            android:fontFamily="@font/futura_medium_bt"
-            android:textColor="#3e3c3c"
-            android:textSize="14dp"
-            android:hint="Your feedback here"
-            android:text=""/>
-        <!--
+            android:text="Our Contact"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam assumenda aut, commodi delectus doloremque excepturi fuga fugit laborum magni, natus perferendis perspiciatis sint voluptatem. Aperiam dolore dolorem minus molestiae saepe similique ut vel velit veniam voluptate. Debitis, excepturi, officia. Aspernatur facilis harum inventore, laudantium officiis qui quo. Mollitia, omnis, voluptatum."/>
-        -->
     </LinearLayout>
     <Button
-        android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"

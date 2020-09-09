@@ -193,7 +193,7 @@ public class MyProjectActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
 
-                            Log.e("TAG", "onResponse: " + String.valueOf(response.toString()));
+                            Log.e("myProjectTAG", "onResponse: " + String.valueOf(response.toString()));
                            // JSONObject jresponse = response.getJSONObject(i);
 
                            // ProductList productList=new ProductList();

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -45,14 +46,19 @@ public class SelectColorFromPalletActivity extends Activity {
     private ColorsAdapter colorAdapter;
     private LinearLayout colorLayout;
     private LinearLayout baseColorLayout;
-    private LinearLayout childProd;
+    private LinearLayout childProd, childColor;
     private String accessToken;
+
+    private ImageView crossBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_select_color_layout);
-        baseColorLayout=findViewById(R.id.baseColorLayout);
+        //baseColorLayout=findViewById(R.id.baseColorLayout);
+        //m
+        colorListLayout = findViewById(R.id.colorListLayout);
+
         SharedPreferences pref = getSharedPreferences(Constants.PREF, Context.MODE_PRIVATE);
 
         accessToken = pref.getString("accessToken", null);
@@ -64,7 +70,9 @@ public class SelectColorFromPalletActivity extends Activity {
                         Log.e("response", String.valueOf(response));
                         try {
                             //  JSONArray jsonArray = new JSONArray(response);
-                            baseColorLayout.removeAllViews();
+                            //baseColorLayout.removeAllViews();
+                            //m
+                            colorListLayout.removeAllViews();
 
                             for(int i = 0; i < response.length(); i++){
                                 JSONObject jresponse = response.getJSONObject(i);
@@ -72,6 +80,7 @@ public class SelectColorFromPalletActivity extends Activity {
                                 String colorName = jresponse.getString("colorName");
                                 String hexColorCode = jresponse.getString("hexColorCode");
 
+                                /*
                                 childProd = (LinearLayout) getLayoutInflater().inflate(R.layout.color_pallet_child, null);
                                 TextView colorValTxt = (TextView) childProd.findViewById(R.id.colorValTxt);
                                 TextView ColorVal = (TextView) childProd.findViewById(R.id.ColorVal);
@@ -83,7 +92,18 @@ public class SelectColorFromPalletActivity extends Activity {
                                 ColorVal.setText(colorName);
                                 baseColorLayout.addView(childProd);
 
-                                childProd.setOnClickListener(new View.OnClickListener() {
+                                 */
+
+                                childColor = (LinearLayout) getLayoutInflater().inflate(R.layout.color_child, null);
+                                LinearLayout colorLayoutVal = (LinearLayout) childColor.findViewById(R.id.colorLayoutVal);
+                                TextView colorNameTxt = (TextView) childColor.findViewById(R.id.colorNameTxt);
+
+                                colorLayoutVal.setBackgroundColor(Color.parseColor(hexColorCode));
+                                colorNameTxt.setText(colorName.substring(0, 1).toUpperCase()+ colorName.substring(1).toLowerCase());
+
+                                colorListLayout.addView(childColor);
+
+                                childColor.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         Intent intent = new Intent(SelectColorFromPalletActivity.this, SelectedColorToImageActivity.class);
@@ -125,6 +145,18 @@ public class SelectColorFromPalletActivity extends Activity {
                 Intent intent = new Intent(SelectColorFromPalletActivity.this, SelectedColorToImageActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        crossBtn = findViewById(R.id.crossBtn);
+        crossBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(SelectColorFromPalletActivity.this, PaintVisualizerActivity.class);
+//                startActivity(intent);
+//                finish();
+
+                onBackPressed();
             }
         });
     }

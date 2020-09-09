@@ -1,15 +1,26 @@
 package com.shawinfosolutions.paintvisualizer.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.shawinfosolutions.paintvisualizer.Activity.MyProjects.MyProjectActivity;
 import com.shawinfosolutions.paintvisualizer.Activity.OurProduct.OurProductActivity;
+import com.shawinfosolutions.paintvisualizer.Constants;
 import com.shawinfosolutions.paintvisualizer.R;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +28,13 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MoreOptionActivity extends AppCompatActivity {
 
     ImageView homeImg, productImg, projectImg, moreImg;
-private LinearLayout myPrefLayout,faqLayout,feedbacklayout,videoLayout,storeLocatorLayout;
+private LinearLayout myPrefLayout,faqLayout,feedbacklayout,videoLayout,storeLocatorLayout,contactUsLayout,logoutlayout;
     private ActionBar actionbar;
+
+    private GoogleSignInOptions gso;
+    private GoogleSignInClient mGoogleSignInClient;
+
+    private SharedPreferences pref;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +53,9 @@ private LinearLayout myPrefLayout,faqLayout,feedbacklayout,videoLayout,storeLoca
         myPrefLayout=findViewById(R.id.myPrefLayout);
         projectImg = findViewById(R.id.projectImg);
         storeLocatorLayout=findViewById(R.id.storeLocatorLayout);
+        contactUsLayout = findViewById(R.id.contactUsLayout);
+        logoutlayout = findViewById(R.id.logoutlayout);
+
         feedbacklayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +69,13 @@ private LinearLayout myPrefLayout,faqLayout,feedbacklayout,videoLayout,storeLoca
             public void onClick(View view) {
                 Intent intent=new Intent(MoreOptionActivity.this,StoreLocatorActivity.class);
 
+                startActivity(intent);
+            }
+        });
+        contactUsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MoreOptionActivity.this,ContactUsActivity.class);
                 startActivity(intent);
             }
         });
@@ -108,5 +134,54 @@ private LinearLayout myPrefLayout,faqLayout,feedbacklayout,videoLayout,storeLoca
                 startActivity(intent);
             }
         });
+
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        logoutlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(MoreOptionActivity.this);
+
+                if(account != null){
+
+                    String personEmail = account.getEmail();
+                    System.out.println("Account_email:"+personEmail);
+                    Toast.makeText(getApplicationContext(),"Logging out "+personEmail,Toast.LENGTH_LONG).show();
+
+                    signOut();
+                }else{
+
+                    pref = MoreOptionActivity.this.getSharedPreferences(Constants.PREF, Context.MODE_PRIVATE); // 0 - for private mode
+                    pref.edit().remove("accessToken").clear().commit();
+
+                    Toast.makeText(getApplicationContext(),"Logging out... ",Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(MoreOptionActivity.this,SignUpActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        });
+    }
+
+    private void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                        System.out.println("userLogout");
+                        Intent intent=new Intent(MoreOptionActivity.this,SignUpActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
     }
 }

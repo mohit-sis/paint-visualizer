@@ -2,6 +2,7 @@ package com.shawinfosolutions.paintvisualizer.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,13 +62,14 @@ public class  MyProjectAdapter extends
 
         // Set item views based on your views and data model
         holder.ProjectName.setText(myProjects.get(position).getTitle());
-
+        Log.e("ProjectName" ,myProjects.get(position).getTitle());
 
 //        TextView textView = holder.nameTextView;
 //        textView.setText(contact.getName());
 //        Glide.with(mContext)
 //                .load(mThumbIds[position])
 //                .into(holder.projectImg);
+
 //
         Picasso.with(mContext)
 
@@ -89,10 +91,18 @@ public class  MyProjectAdapter extends
                 String Pictures = view.getTag(R.string.tagPicture).toString();
                 String Products = view.getTag(R.string.tagProducts).toString();
                 String Colors = view.getTag(R.string.tagColors).toString();
+                //m
+                String projectName = myProjects.get(0).getTitle();
+                String projectImgLink = myProjects.get(0).getImageLink();
+
                 MyProjectItem myProjectval=new MyProjectItem();
+
                 myProjectval.setPictures(Pictures);
                 myProjectval.setProducts(Products);
                 myProjectval.setColors(Colors);
+                //m
+                myProjectval.setTitle(projectName);
+                myProjectval.setProjectImgLink(projectImgLink);
                 //myProjectSelectesArrayList.add(myProjectval);
                 Intent intent=new Intent(mContext, SelectedProjectActivity.class);
                 intent.putExtra("myProject",(Serializable) myProjectval);

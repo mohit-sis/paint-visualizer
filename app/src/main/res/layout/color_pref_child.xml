@@ -51,6 +51,7 @@
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/preImgView"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_gravity="center"
@@ -250,7 +251,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/baseColorLay"
                             android:layout_gravity="bottom"
-                            android:layout_marginTop="-10dp"
+                            android:layout_marginTop="0dp"
                             android:background="@color/white"
                             android:gravity="center"
                             android:orientation="horizontal"

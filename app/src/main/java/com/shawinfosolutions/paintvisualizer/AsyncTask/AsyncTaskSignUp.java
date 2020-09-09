@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.error.AuthFailureError;
 import com.android.volley.error.NetworkError;
 import com.android.volley.error.NoConnectionError;
@@ -23,9 +24,11 @@ import com.android.volley.error.TimeoutError;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.shawinfosolutions.paintvisualizer.Activity.MainActivity;
 import com.shawinfosolutions.paintvisualizer.Activity.SignUpActivity;
 import com.shawinfosolutions.paintvisualizer.Activity.SignUpWithUsActivity;
 import com.shawinfosolutions.paintvisualizer.Constants;
+import com.shawinfosolutions.paintvisualizer.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -108,7 +111,41 @@ public class AsyncTaskSignUp  extends AsyncTask<Void, Void, Void>  {
                                 // Intent intent = new Intent(context, LoginActivity.class);
                                 // startActivity(intent);
                                 //finish();
-                                Toast.makeText(context, "" + response, Toast.LENGTH_SHORT).show();
+                                try {
+                                    String email = response.getString("email");
+
+                                    final Dialog dialog = new Dialog(context);
+                                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
+                                    dialog.setContentView(
+                                            R.layout.error_custom_dialog);
+                                    TextView errorMsgTxt = (TextView) dialog.findViewById(R.id.errorMsgTxt);
+                                    errorMsgTxt.setText("User registered successfully, Please sign in with username: "+email);
+                                    Button btnOK = (Button) dialog.findViewById(R.id.btnOK);
+                                    Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
+
+                                    btnOK.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            Intent intent = new Intent(context, SignUpActivity.class);
+                                            context.startActivity(intent);
+                                        }
+                                    });
+                                    btnCancel.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+                                    dialog.show();
+
+                                    //Toast.makeText(context, "" + "User registered successfully with username: "+email, Toast.LENGTH_SHORT).show();
+
+
+
+                                }catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
 
                                 // } else {
                                 //   Toast.makeText(context, ""+response, Toast.LENGTH_SHORT).show();
@@ -134,7 +171,9 @@ public class AsyncTaskSignUp  extends AsyncTask<Void, Void, Void>  {
                             Toast.makeText(context, "TimeOut Error.Please Try Again", Toast.LENGTH_SHORT).show();
                         }
                     }
+
                 }));
+
 
             } catch (JSONException e) {
                 e.printStackTrace();

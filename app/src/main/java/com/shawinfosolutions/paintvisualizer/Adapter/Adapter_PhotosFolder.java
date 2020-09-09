@@ -13,6 +13,7 @@ import com.shawinfosolutions.paintvisualizer.Model_images;
 import com.shawinfosolutions.paintvisualizer.R;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Adapter_PhotosFolder extends ArrayAdapter<Model_images> {
@@ -88,7 +89,7 @@ public class Adapter_PhotosFolder extends ArrayAdapter<Model_images> {
 //                .load(al_menu.get(position).getAl_imagepath().get(0))
 //                .into(viewHolder.iv_image);
         Picasso.with(context)
-                .load(Constants.ImageURL +al_menu.get(position).getAl_imagepath().get(0))
+                .load(new File(al_menu.get(position).getAl_imagepath().get(0)))
                 .placeholder(R.drawable.duco)
                 .into(viewHolder.iv_image);
         return convertView;

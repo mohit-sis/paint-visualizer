@@ -51,7 +51,7 @@ public class AllColorExplorerFragment extends Fragment {
     private ColorsAdapter colorAdapter;
     private LinearLayout colorLayout;
     private LinearLayout baseColorLayout;
-    private LinearLayout childProd;
+    private LinearLayout childProd, childColor;
     private String accessToken;
     public AllColorExplorerFragment() {
         // Required empty public constructor
@@ -63,7 +63,8 @@ public class AllColorExplorerFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_all_color_explorer, container, false);
         thiscontext=container.getContext();
-        baseColorLayout=root.findViewById(R.id.baseColorLayout);
+        //baseColorLayout=root.findViewById(R.id.baseColorLayout);
+        colorListLayout = root.findViewById(R.id.colorListLayout);
 
         SharedPreferences pref = getActivity().getSharedPreferences(Constants.PREF, Context.MODE_PRIVATE);
 
@@ -76,7 +77,8 @@ public class AllColorExplorerFragment extends Fragment {
                         Log.e("response", String.valueOf(response));
                         try {
                             //  JSONArray jsonArray = new JSONArray(response);
-                            baseColorLayout.removeAllViews();
+                            //baseColorLayout.removeAllViews();
+                            colorListLayout.removeAllViews();
 
                             for(int i = 0; i < response.length(); i++){
                                 JSONObject jresponse = response.getJSONObject(i);
@@ -84,18 +86,28 @@ public class AllColorExplorerFragment extends Fragment {
                                 String colorName = jresponse.getString("colorName");
                                 String hexColorCode = jresponse.getString("hexColorCode");
 
-                                childProd = (LinearLayout) getLayoutInflater().inflate(R.layout.color_pallet_child, null);
-                                TextView colorValTxt = (TextView) childProd.findViewById(R.id.colorValTxt);
-                                TextView ColorVal = (TextView) childProd.findViewById(R.id.ColorVal);
+//                                childProd = (LinearLayout) getLayoutInflater().inflate(R.layout.color_pallet_child, null);
+//                                TextView colorValTxt = (TextView) childProd.findViewById(R.id.colorValTxt);
+//                                TextView ColorVal = (TextView) childProd.findViewById(R.id.ColorVal);
+//
+//                                GradientDrawable bgShape = (GradientDrawable) colorValTxt.getBackground().getCurrent();
+//                                bgShape.setColor(Color.parseColor(hexColorCode));
+//                                bgShape.setStroke(1, Color.parseColor(hexColorCode));
 
-                                GradientDrawable bgShape = (GradientDrawable) colorValTxt.getBackground().getCurrent();
-                                bgShape.setColor(Color.parseColor(hexColorCode));
-                                bgShape.setStroke(1, Color.parseColor(hexColorCode));
+//                                ColorVal.setText(colorName);
+//                                baseColorLayout.addView(childProd);
 
-                                ColorVal.setText(colorName);
-                                baseColorLayout.addView(childProd);
+                                childColor = (LinearLayout) getLayoutInflater().inflate(R.layout.color_child, null);
+                                LinearLayout colorLayoutVal = (LinearLayout) childColor.findViewById(R.id.colorLayoutVal);
+                                TextView colorNameTxt = (TextView) childColor.findViewById(R.id.colorNameTxt);
 
-                                childProd.setOnClickListener(new View.OnClickListener() {
+                                colorLayoutVal.setBackgroundColor(Color.parseColor(hexColorCode));
+                                colorNameTxt.setText(colorName.substring(0, 1).toUpperCase()+ colorName.substring(1).toLowerCase());
+
+                                colorListLayout.addView(childColor);
+
+                                /*
+                                childColor.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         Intent intent = new Intent(getContext(), SelectedColorToImageActivity.class);
@@ -103,6 +115,7 @@ public class AllColorExplorerFragment extends Fragment {
 
                                     }
                                 });
+                                 */
 
                             }
                         } catch (JSONException e) {
