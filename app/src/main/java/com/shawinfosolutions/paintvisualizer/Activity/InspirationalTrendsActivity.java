@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,7 +41,7 @@ import static com.android.volley.Request.Method.GET;
 public class InspirationalTrendsActivity extends Activity {
     private TextView saveInProjTxt;
     private String accessToken;
-    private ImageView image1, nxtImgView;
+    private ImageView image1, nxtImgView, preImgView;
     private LinearLayout basecolor;
     private LinearLayout childProd, childProdlay;
     private LinearLayout preference_child_layout, preference_parents_layout;
@@ -109,10 +110,12 @@ public class InspirationalTrendsActivity extends Activity {
                             //m
                             prefDataList.clear();
 
+
                             for (int i = 0; i < response.length(); i++) {
                                 childProdlay = (LinearLayout) getLayoutInflater().inflate(R.layout.color_pref_child, null);
                                 image1 = childProdlay.findViewById(R.id.image1);
                                 nxtImgView = childProdlay.findViewById(R.id.nxtImgView);
+                                preImgView = childProdlay.findViewById(R.id.preImgView);
                                 basecolor = childProdlay.findViewById(R.id.basecolor);
 
                                 JSONObject jresponse = response.getJSONObject(i);
@@ -153,6 +156,23 @@ public class InspirationalTrendsActivity extends Activity {
                                 pref_disPagerAdapter = new Pref_DisPagerAdapter(InspirationalTrendsActivity.this, imagePathlist, colorDataList, prefData);
                                 viewPager.setAdapter(pref_disPagerAdapter);
 
+                                /*
+                                nxtImgView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Log.e("pageNo:",String.valueOf(viewPager.getCurrentItem()));
+                                        viewPager.setCurrentItem(getItem(+1), true);
+                                    }
+                                });
+
+                                preImgView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Log.e("pageNo:",String.valueOf(viewPager.getCurrentItem()));
+                                        viewPager.setCurrentItem(getItem(-1), true);
+                                    }
+                                });
+                                 */
                             }
 
                             Log.e("prefDataListSize",String.valueOf(prefDataList.size()));
@@ -184,8 +204,25 @@ public class InspirationalTrendsActivity extends Activity {
         };
         Volley.newRequestQueue(InspirationalTrendsActivity.this).add(jsonObjectRequest);
 
+        //Disable touch swipe
+        /*
+        viewPager.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                return true;
+            }
+        });
+         */
 
     }
+
+    private int getItem(int i) {
+        return viewPager.getCurrentItem() + i;
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

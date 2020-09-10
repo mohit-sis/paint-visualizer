@@ -33,9 +33,9 @@ public class ColoExplorerActivity  extends AppCompatActivity {
         tabLayout=(TabLayout)findViewById(R.id.tabLayout);
         viewPager=(ViewPager)findViewById(R.id.viewPager);
 
-        tabLayout.addTab(tabLayout.newTab().setText("ALL COLOUR"));
-        tabLayout.addTab(tabLayout.newTab().setText("MY COLOUR "));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
+        tabLayout.addTab(tabLayout.newTab().setText("ALL COLOURS"));
+        tabLayout.addTab(tabLayout.newTab().setText("MY COLOURS"));
+        //tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ColourExplorerTabAdapter adapter = new ColourExplorerTabAdapter(this,getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);

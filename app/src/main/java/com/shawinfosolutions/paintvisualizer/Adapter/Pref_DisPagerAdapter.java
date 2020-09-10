@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -24,7 +25,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class Pref_DisPagerAdapter extends PagerAdapter {
 
@@ -33,6 +36,7 @@ public class Pref_DisPagerAdapter extends PagerAdapter {
     private ArrayList<String> imagePathList;
     private ArrayList<ColorData> colorDataList;
     private PrefDiscoveryData prefData;
+    private ViewPager viewPager;
     private LinearLayout colorListLayout, selectedColorLay, openOptionLayout;
 
     public Pref_DisPagerAdapter(Context context, ArrayList<String> imagePathList, ArrayList<ColorData> colorDataList, PrefDiscoveryData prefData) {
@@ -61,10 +65,12 @@ public class Pref_DisPagerAdapter extends PagerAdapter {
         //imageView.setImageResource(images[position]);
         ImageView image1 = itemView.findViewById(R.id.image1);
         //LinearLayout baseColor=itemView.findViewById(R.id.basecolor);
-        TextView descTextView = itemView.findViewById(R.id.DescriptionTxt1);
-        ImageView nextBtn = itemView.findViewById(R.id.nxtImgView);
 
         //m
+        TextView descTextView = itemView.findViewById(R.id.DescriptionTxt1);
+        ImageView nextBtn = itemView.findViewById(R.id.nxtImgView);
+        ImageView preImgView = itemView.findViewById(R.id.preImgView);
+        final ImageView like_img = itemView.findViewById(R.id.like_img);
         colorListLayout = itemView.findViewById(R.id.colorListLayout);
 
         /*
@@ -115,7 +121,9 @@ public class Pref_DisPagerAdapter extends PagerAdapter {
         }
 
         /*
-        //m
+        //To open optionLayout
+        selectedColorLay=itemView.findViewById(R.id.selectedColorLay);
+
         selectedColorLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,15 +131,35 @@ public class Pref_DisPagerAdapter extends PagerAdapter {
                 openOptionLayout.setVisibility(View.VISIBLE);
             }
         });
+        */
 
+        //next and prev pref_discovery
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Animation RightSwipe = AnimationUtils.loadAnimation(context, R.anim.right_swipe);
-                ScreenAnimation.startAnimation(RightSwipe);
+                Log.e("pref_dis","nextButtonClicked");
+                //Log.e("pageNo:",String.valueOf(viewPager.getCurrentItem()));
+                //viewPager.setCurrentItem(getItem(+1), true);
             }
         });
-         */
+
+        preImgView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("pref_dis","prevButtonClicked");
+                //Log.e("pageNo:",String.valueOf(viewPager.getCurrentItem()));
+                //viewPager.setCurrentItem(getItem(-1), true);
+            }
+        });
+
+        //when click on like button
+        like_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("pref_dis","like_clicked");
+                //like_img.setImageResource(R.drawable.like_img_red);
+            }
+        });
 
 
         //listening to image click

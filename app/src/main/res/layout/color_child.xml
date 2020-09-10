@@ -52,8 +52,8 @@
 
             <LinearLayout
                 android:id="@+id/colorLayoutVal"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
 
                 android:background="@android:color/holo_red_light"

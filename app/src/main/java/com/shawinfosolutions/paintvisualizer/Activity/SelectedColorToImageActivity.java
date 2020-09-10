@@ -34,8 +34,9 @@ public class SelectedColorToImageActivity extends Activity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(SelectedColorToImageActivity.this,SelectColorFromPalletActivity.class);
+                Intent intent=new Intent(SelectedColorToImageActivity.this,ColoExplorerActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -60,7 +61,7 @@ public class SelectedColorToImageActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(SelectedColorToImageActivity.this, SelectColorFromPalletActivity.class);
+        Intent intent = new Intent(SelectedColorToImageActivity.this, ColoExplorerActivity.class);
         startActivity(intent);
         finish();
     }

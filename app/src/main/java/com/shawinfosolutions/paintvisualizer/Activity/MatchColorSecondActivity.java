@@ -12,9 +12,11 @@ import com.shawinfosolutions.paintvisualizer.R;
 
 import androidx.annotation.Nullable;
 
+import org.opencv.videoio.VideoWriter;
+
 public class MatchColorSecondActivity extends Activity {
     private LinearLayout openOptionLayout;
-    private LinearLayout selectedColorLayout;
+    private LinearLayout selectedColorLayout, findPaintsLayout;
     private ImageView backBtn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,6 +24,8 @@ public class MatchColorSecondActivity extends Activity {
         setContentView(R.layout.match_color_layout);
         openOptionLayout=findViewById(R.id.openOptionLayout);
         selectedColorLayout=findViewById(R.id.selectedColorLayout);
+        findPaintsLayout = findViewById(R.id.findPaintsLayout);
+
         openOptionLayout.setVisibility(View.GONE);
         backBtn=findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +41,14 @@ public class MatchColorSecondActivity extends Activity {
             public void onClick(View view) {
                 openOptionLayout.setVisibility(View.VISIBLE);
 
+            }
+        });
+
+        findPaintsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MatchColorSecondActivity.this,ColoExplorerActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -102,11 +102,10 @@ public class AllColorExplorerFragment extends Fragment {
                                 TextView colorNameTxt = (TextView) childColor.findViewById(R.id.colorNameTxt);
 
                                 colorLayoutVal.setBackgroundColor(Color.parseColor(hexColorCode));
-                                colorNameTxt.setText(colorName.substring(0, 1).toUpperCase()+ colorName.substring(1).toLowerCase());
+                                colorNameTxt.setText(colorName);
 
                                 colorListLayout.addView(childColor);
 
-                                /*
                                 childColor.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
@@ -115,9 +114,9 @@ public class AllColorExplorerFragment extends Fragment {
 
                                     }
                                 });
-                                 */
 
                             }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

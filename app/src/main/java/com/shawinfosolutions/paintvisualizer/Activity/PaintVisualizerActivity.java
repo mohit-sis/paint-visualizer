@@ -23,7 +23,7 @@ public class PaintVisualizerActivity extends Activity {
         selectColorLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(PaintVisualizerActivity.this, SelectColorFromPalletActivity.class);
+                Intent intent=new Intent(PaintVisualizerActivity.this, ColoExplorerActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -35,6 +35,7 @@ public class PaintVisualizerActivity extends Activity {
             public void onClick(View view) {
                 Intent intent=new Intent(PaintVisualizerActivity.this,VisualizerActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
