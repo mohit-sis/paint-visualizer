@@ -187,7 +187,7 @@
                                 android:inputType="text"
 
                                 android:singleLine="true"
-                                android:text="test@mail.com"
+                                android:text=""
                                 android:textColor="#3e3c3c"
                                 android:textSize="14dp" />
 
@@ -237,7 +237,7 @@
                                 android:fontFamily="@font/futura_medium_bt"
                                 android:singleLine="true"
 
-                                android:text="test123"
+                                android:text=""
                                 android:textColor="#3e3c3c"
                                 android:textSize="14dp" />
 

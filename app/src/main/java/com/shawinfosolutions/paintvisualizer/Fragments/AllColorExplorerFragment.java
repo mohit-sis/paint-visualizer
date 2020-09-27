@@ -71,15 +71,15 @@ public class AllColorExplorerFragment extends Fragment {
         accessToken = pref.getString("accessToken", null);
         Log.e("accessToken","==="+accessToken);
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
-                (GET, Constants.Color, null, new Response.Listener<JSONArray>() {
+                (GET, Constants.AllColors, null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.e("response", String.valueOf(response));
+                        Log.e("AllColorResponse", String.valueOf(response));
                         try {
                             //  JSONArray jsonArray = new JSONArray(response);
                             //baseColorLayout.removeAllViews();
                             colorListLayout.removeAllViews();
-
+                            Log.e("colorResponseLength",String.valueOf(response.length()));
                             for(int i = 0; i < response.length(); i++){
                                 JSONObject jresponse = response.getJSONObject(i);
                                 String id = jresponse.getString("id");

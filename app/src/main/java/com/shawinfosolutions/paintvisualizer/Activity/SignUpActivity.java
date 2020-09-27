@@ -193,10 +193,11 @@ private EditText editTextUsername,editTextPass;
         if(editTextUsername.getText().toString().equalsIgnoreCase("")){
             editTextUsername.setError("Please enter username");
 
-        } else if(!editTextUsername.getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
-            editTextUsername.setError("Please enter valid username");
-            return false;
         }
+//        else if(!editTextUsername.getText().toString().trim().matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+//            editTextUsername.setError("Please enter valid username");
+//            return false;
+//        }
         else if(editTextPass.getText().toString().equalsIgnoreCase("")){
             editTextPass.setError("Please enter password");
             return false;

@@ -13,19 +13,23 @@ public class Constants {
 
     public static String PreferenceDiscovery = URL + "/v1/preferenceDiscovery/0";
 
+    public static String MyPreferences = URL + "/v1/my/preferenceDiscovery";
+
     public static String Color = URL + "/v1/color/0";
+
+    public static String AllColors = URL + "/v1/allColors";
 
     public static String Video = URL + "/v1/video/0";
 
     public static String AllProducts = URL + "/v1/allProducts/";
 
-    public static String DecorativeProducts = URL + "/v1/products/decorative";
+    public static String DecorativeProducts = URL + "/v1/allProducts/1";
 
-    public static String AutomativeProducts = URL + "/v1/products/automative";
+    public static String AutomativeProducts = URL + "/v1/allProducts/2";
 
-    public static String IndustrialProducts = URL + "/v1/products/industrial";
+    public static String IndustrialProducts = URL + "/v1/allProducts/3";
 
-    public static String MyProject = URL + "/v1/myProject/";
+    public static String MyProject = URL + "/v1/my/SavedProject";
 
     public static String ImageURL = "https://vlz.ezycom.co.in/cms/";
 

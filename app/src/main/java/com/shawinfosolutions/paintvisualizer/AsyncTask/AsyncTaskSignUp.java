@@ -41,8 +41,9 @@ public class AsyncTaskSignUp  extends AsyncTask<Void, Void, Void>  {
     private String loading_message="Please wait...";
     String username;
    String password; String companyname; String DOB; String PhnNo; String emailId;
+   String profession;
 
-    public  AsyncTaskSignUp(Context context, String username, String password, String companyname, String DOB, String PhnNo, String emailId) {
+    public  AsyncTaskSignUp(Context context, String username, String password, String companyname, String DOB, String PhnNo, String emailId, String profession) {
             this.context = context;
             this.username = username;
             this.companyname = companyname;
@@ -50,6 +51,7 @@ public class AsyncTaskSignUp  extends AsyncTask<Void, Void, Void>  {
             this.DOB = DOB;
             this.PhnNo = PhnNo;
             this.emailId = emailId;
+            this.profession = profession;
 
         }
 
@@ -94,8 +96,12 @@ public class AsyncTaskSignUp  extends AsyncTask<Void, Void, Void>  {
                 object1.put("firstName", username);
                 object1.put("lastName", username);
                 object1.put("email", emailId);
-                object1.put("username", username);
+                object1.put("userName", username);
                 object1.put("password", password);
+                object1.put("companyName", companyname);
+                object1.put("phoneNumber", PhnNo);
+                object1.put("dob", DOB);
+                object1.put("profession", profession);
 
                 Log.d("TAG", "Login: " + object1);
 
@@ -112,14 +118,14 @@ public class AsyncTaskSignUp  extends AsyncTask<Void, Void, Void>  {
                                 // startActivity(intent);
                                 //finish();
                                 try {
-                                    String email = response.getString("email");
+                                    String msg = response.getString("msg");
 
                                     final Dialog dialog = new Dialog(context);
                                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
                                     dialog.setContentView(
                                             R.layout.error_custom_dialog);
                                     TextView errorMsgTxt = (TextView) dialog.findViewById(R.id.errorMsgTxt);
-                                    errorMsgTxt.setText("User registered successfully, Please sign in with username: "+email);
+                                    errorMsgTxt.setText(msg);
                                     Button btnOK = (Button) dialog.findViewById(R.id.btnOK);
                                     Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
 

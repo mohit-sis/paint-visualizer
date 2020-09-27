@@ -111,9 +111,9 @@ public class Pref_DisPagerAdapter extends PagerAdapter {
             TextView colorNameTxt = (TextView) childColor.findViewById(R.id.colorNameTxt);
 
             Log.e("colorName", colorDataList.get(i).getColorName());
-            Log.e("ColorCode",String.valueOf(Color.parseColor(colorDataList.get(i).getHexcodeVal())));
+            Log.e("ColorCode",String.valueOf(Color.parseColor(colorDataList.get(i).getHex())));
 
-            colorLayoutVal.setBackgroundColor(Color.parseColor(colorDataList.get(i).getHexcodeVal()));
+            colorLayoutVal.setBackgroundColor(Color.parseColor(colorDataList.get(i).getHex()));
             colorNameTxt.setText(colorName.substring(0, 1).toUpperCase()+ colorName.substring(1).toLowerCase());
 
             colorListLayout.addView(childColor);

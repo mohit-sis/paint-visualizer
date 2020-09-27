@@ -71,7 +71,7 @@ import java.util.ArrayList;
             TextView colorNameTxt=convertView.findViewById(R.id.colorNameTxt);
             //sets the text for item name and item description from the current item object
             colorNameTxt.setText(productLists.get(position).getColorName());
-            colorLayout.setBackgroundColor(Color.parseColor(productLists.get(position).getHexcodeVal())); // From android.graphics.Color
+            colorLayout.setBackgroundColor(Color.parseColor(productLists.get(position).getHex())); // From android.graphics.Color
 
             //  ItemImg.setText(mThumbIds.getItemDescription());
 //        Glide.with(mContext)

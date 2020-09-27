@@ -41,7 +41,7 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, final int position) {
         //  String animal = mData.get(position);
         //   holder.child_layout.setBackgroundResource(R.drawable.bg_button_one); // From android.graphics.Color
-        holder.colorLayout.setBackgroundColor(Color.parseColor(mData.get(position).getHexcodeVal())); // From android.graphics.Color
+        holder.colorLayout.setBackgroundColor(Color.parseColor(mData.get(position).getHex())); // From android.graphics.Color
         holder.colorNameTxt.setText(mData.get(position).getColorName());
 //        holder.myTextView.setOnClickListener(new View.OnClickListener() {
 //            @Override

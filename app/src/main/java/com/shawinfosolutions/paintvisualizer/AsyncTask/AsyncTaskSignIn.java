@@ -85,7 +85,7 @@ public class AsyncTaskSignIn extends AsyncTask<Void, Void, Void> {
                             postParam.put("email", editTextmail.getText().toString().trim());
                             postParam.put("username", editTextusername.getText().toString().trim());
                             postParam.put("password", editTextpassword.getText().toString().trim());*/
-                object1.put("username", username);
+                object1.put("userName", username);
                 object1.put("password", password);
 
             } catch (JSONException e) {

@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.error.AuthFailureError;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonArrayRequest;
+import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.shawinfosolutions.paintvisualizer.Adapter.Pref_DisPagerAdapter;
 import com.shawinfosolutions.paintvisualizer.Constants;
@@ -98,12 +99,16 @@ public class InspirationalTrendsActivity extends Activity {
             }
         });
 
-        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
-                (GET, Constants.PreferenceDiscovery, null, new Response.Listener<JSONArray>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (GET, Constants.PreferenceDiscovery, null, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(JSONObject response) {
                         Log.e("responsePreference", String.valueOf(response));
                         try {
+                            JSONArray content = response.getJSONArray("content");
+                            Log.e("responseContent", content.toString());
+                            Log.e("ContentLength", String.valueOf(content.length()));
+
                             preference_parents_layout.removeAllViews();
                             colorDataList.clear();
                             imagePathlist.clear();
@@ -111,14 +116,15 @@ public class InspirationalTrendsActivity extends Activity {
                             prefDataList.clear();
 
 
-                            for (int i = 0; i < response.length(); i++) {
+                            for (int i = 0; i < content.length(); i++) {
                                 childProdlay = (LinearLayout) getLayoutInflater().inflate(R.layout.color_pref_child, null);
                                 image1 = childProdlay.findViewById(R.id.image1);
                                 nxtImgView = childProdlay.findViewById(R.id.nxtImgView);
                                 preImgView = childProdlay.findViewById(R.id.preImgView);
                                 basecolor = childProdlay.findViewById(R.id.basecolor);
 
-                                JSONObject jresponse = response.getJSONObject(i);
+
+                                JSONObject jresponse = content.getJSONObject(i);
                                 String id = jresponse.getString("id");
                                 String title = jresponse.getString("title");
                                 String imageLink = jresponse.getString("imageLink");
@@ -141,12 +147,14 @@ public class InspirationalTrendsActivity extends Activity {
 
                                     ColorData colorData = new ColorData();
                                     colorData.setColorName(jcolorObj.getString("colorName"));
-                                    colorData.setHexcodeVal(jcolorObj.getString("hexColorCode"));
+                                    colorData.setHex(jcolorObj.getString("hex"));
                                     colorDataList.add(colorData);
 
                                     //m
                                     prefData.setColors(colorDataList);
                                 }
+
+
 
                                 prefDataList.add(prefData);
 

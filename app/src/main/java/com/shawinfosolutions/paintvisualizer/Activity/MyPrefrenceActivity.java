@@ -91,7 +91,7 @@ public class MyPrefrenceActivity extends Activity {
         });
 
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
-                (GET, Constants.PreferenceDiscovery, null, new Response.Listener<JSONArray>() {
+                (GET, Constants.MyPreferences, null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.e("responsePreference", String.valueOf(response));
@@ -128,7 +128,7 @@ public class MyPrefrenceActivity extends Activity {
 
                                     ColorData colorData = new ColorData();
                                     colorData.setColorName(jcolorObj.getString("colorName"));
-                                    colorData.setHexcodeVal(jcolorObj.getString("hexColorCode"));
+                                    colorData.setHex(jcolorObj.getString("hex"));
                                     colorDataList.add(colorData);
 
                                     //m

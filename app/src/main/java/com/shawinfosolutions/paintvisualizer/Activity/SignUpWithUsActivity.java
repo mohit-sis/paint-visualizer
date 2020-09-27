@@ -39,6 +39,7 @@ private Button SignUpBtn;
 private ImageView backbtn;
 private EditText editTextUsername,editTextPassword,editTextConPassword,editTextCompanyName,editTextPhnNo,
         editTextemail;
+private String profession;
     final Calendar myCalendar = Calendar.getInstance();
 
     @Override
@@ -84,6 +85,7 @@ private EditText editTextUsername,editTextPassword,editTextConPassword,editTextC
 
                      Home="111";
                     Prop="000";
+                    profession = "professional";
                     Log.e("ProfessionalLay", "ProfessionalLay");
 
                     companyNameLayout.setVisibility(View.VISIBLE);
@@ -111,6 +113,7 @@ private EditText editTextUsername,editTextPassword,editTextConPassword,editTextC
                     Home="000";
                     Prop="111";
 
+                    profession = "homemaker";
                     companyNameLayout.setVisibility(View.GONE);
 
 
@@ -145,7 +148,7 @@ private EditText editTextUsername,editTextPassword,editTextConPassword,editTextC
             public void onClick(View view) {
 
                 if(ValidateData()){
-                    AsyncTaskSignUp asyncTask=new AsyncTaskSignUp(SignUpWithUsActivity.this,editTextUsername.getText().toString(),editTextConPassword.getText().toString(),editTextCompanyName.getText().toString(),editTextDateOfBirth.getText().toString(),editTextPhnNo.getText().toString(),editTextemail.getText().toString());
+                    AsyncTaskSignUp asyncTask=new AsyncTaskSignUp(SignUpWithUsActivity.this,editTextUsername.getText().toString(),editTextConPassword.getText().toString(),editTextCompanyName.getText().toString(),editTextDateOfBirth.getText().toString(),editTextPhnNo.getText().toString(),editTextemail.getText().toString(), profession);
                     asyncTask.execute();
 
 

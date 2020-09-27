@@ -20,6 +20,7 @@ import com.android.volley.error.ParseError;
 import com.android.volley.error.ServerError;
 import com.android.volley.error.TimeoutError;
 import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonArrayRequest;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.shawinfosolutions.paintvisualizer.Activity.MainActivity;
@@ -31,6 +32,7 @@ import com.shawinfosolutions.paintvisualizer.IObserverAsyncTask;
 import com.shawinfosolutions.paintvisualizer.Model.MyProject;
 import com.shawinfosolutions.paintvisualizer.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -200,26 +202,42 @@ public class MyProjectActivity extends AppCompatActivity {
 
                           //  productList.setName(jresponse.getString("name"));
                             try {
-                                String Title=response.getString("title");
-                                String imageLink=response.getString("imageLink");
-                                String colors=response.getString("colors");
-                                String pictures=response.getString("pictures");
-                                String products=response.getString("products");
-                                Log.e("TAG", "colors: " + colors);
-                                Log.e("TAG", "pictures: " + pictures);
-                                Log.e("TAG", "products: " + products);
-                                MyProject myProject=new MyProject();
-                                myProject.setTitle(Title);
-                                myProject.setImageLink(imageLink);
-                                myProject.setColors(colors);
-                                myProject.setPictures(pictures);
-                                myProject.setProducts(products);
+                                Log.e("responseLength", String.valueOf(response.length()));
+                                //for (int i = 0; i < response.length(); i++) {
 
-                                myProjectArrayList.add(myProject);
+                                    //JSONObject jresponse = response.getJSONObject(i);
 
-                                MyProjectAdapter adapter = new MyProjectAdapter(MyProjectActivity.this,myProjectArrayList);
+                                    String Title = response.getString("title");
+                                    String imageLink = response.getString("imageLink");
+                                    String colors = response.getString("colors");
+                                    String pictures = response.getString("pictures");
+                                    String products = response.getString("products");
+                                    Log.e("TAG", "colors: " + colors);
+                                    Log.e("TAG", "pictures: " + pictures);
+                                    Log.e("TAG", "products: " + products);
+
+//                                    JSONArray jsonArrayColor = jresponse.getJSONArray("colors");
+//                                    Log.e("ColorSize", "" + jsonArrayColor.length());
+//
+//                                    JSONArray jsonArrayProducts = jresponse.getJSONArray("products");
+//                                    Log.e("productsSize", "" + jsonArrayProducts.length());
+//
+//                                    JSONArray jsonArrayGallery = jresponse.getJSONArray("galleryImages");
+//                                    Log.e("galleryImagesSize", "" + jsonArrayGallery .length());
+
+                                    MyProject myProject = new MyProject();
+                                    myProject.setTitle(Title);
+                                    myProject.setImageLink(imageLink);
+                                    myProject.setColors(colors);
+                                    myProject.setPictures(pictures);
+                                    myProject.setProducts(products);
+
+                                    myProjectArrayList.add(myProject);
+
+                                    MyProjectAdapter adapter = new MyProjectAdapter(MyProjectActivity.this, myProjectArrayList);
 //                                    // Attach the adapter to the recyclerview to populate items
-                                my_project_recycle.setAdapter(adapter);
+                                    my_project_recycle.setAdapter(adapter);
+                                //}
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

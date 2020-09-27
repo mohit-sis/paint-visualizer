@@ -58,7 +58,7 @@ public class ColorFragment extends Fragment {
                         ColorData();
 
                 productList.setColorName(explrObject.getString("colorName"));
-                productList.setHexcodeVal((explrObject.getString("hexColorCode")));
+                productList.setHex((explrObject.getString("hex")));
                 productLists.add(productList);
             }
             MyProjColorsAdapter adapter = new MyProjColorsAdapter(getActivity(), productLists);

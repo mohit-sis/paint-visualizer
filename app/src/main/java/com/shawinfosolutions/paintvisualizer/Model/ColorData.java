@@ -10,14 +10,14 @@ public class ColorData {
     private Integer color;
 
     private String colorName;
-    private String hexcodeVal;
+    private String hex;
 
-    public String getHexcodeVal() {
-        return hexcodeVal;
+    public String getHex() {
+        return hex;
     }
 
-    public void setHexcodeVal(String hexcodeVal) {
-        this.hexcodeVal = hexcodeVal;
+    public void setHex(String hex) {
+        this.hex = hex;
     }
 
     public Integer getColor() {
